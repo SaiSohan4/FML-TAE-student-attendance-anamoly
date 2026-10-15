@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Anomaly Detection</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Attendance Analytics</h1>
+      <p>Student Attendance Anomaly Detection System</p>
+    </div>
+    <span class="status">● Dashboard Ready</span>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Monitor Student Attendance</h2>
+      <p>Upload your attendance CSV to identify unusual attendance patterns.</p>
+      <label class="upload-btn" for="csvFile">Upload Attendance CSV</label>
+      <input type="file" id="csvFile" accept=".csv">
+      <button id="sampleBtn">Load Demo Data</button>
+      <p id="message">Upload a CSV with Student_ID, Date, Classes_Held and Classes_Attended columns.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <p>Total Students</p>
+        <h2 id="totalStudents">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>Average Attendance</p>
+        <h2 id="averageAttendance">0%</h2>
+      </article>
+      <article class="stat-card">
+        <p>Anomalies Detected</p>
+        <h2 id="anomalyCount">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>Low Attendance</p>
+        <h2 id="lowCount">0</h2>
+      </article>
+    </section>
+
+    <section class="chart-grid">
+      <article class="panel">
+        <h3>Attendance Distribution</h3>
+        <canvas id="attendanceChart"></canvas>
+      </article>
+      <article class="panel">
+        <h3>Normal vs Flagged Students</h3>
+        <canvas id="anomalyChart"></canvas>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h3>Student Attendance Results</h3>
+      <input id="searchInput" type="text" placeholder="Search Student ID...">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Average Attendance</th>
+              <th>Total Absences</th>
+              <th>Low Attendance Days</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="resultsTable">
+            <tr><td colspan="5">Upload a dataset or load demo data.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <button id="downloadBtn" disabled>Download Results CSV</button>
+    </section>
+
+    <p class="note">
+      Note: This frontend demo flags unusual attendance using attendance
+      statistics and thresholds. It does not run the trained Isolation Forest
+      model from Google Colab.
+    </p>
+  </main>
+
+  <footer>Student Attendance Anomaly Detection | FML TAE-I Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
